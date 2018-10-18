@@ -28,7 +28,8 @@ class DogTableViewCell: UITableViewCell {
     
     func update(with dog: Dog) {
         // initialize the labels to show the dog information
-        
+        nameLabel.text = dog.name
+        breedLabel.text = dog.breed
     }
 
 }
