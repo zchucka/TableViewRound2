@@ -69,6 +69,9 @@ class DogTableViewController: UIViewController, UITableViewDataSource, UITableVi
                     }
                 }
             }
+            else if identifier == "AddSegue" {
+                print("Adding a new dog")
+            }
         }
     }
     
@@ -85,6 +88,13 @@ class DogTableViewController: UIViewController, UITableViewDataSource, UITableVi
                             let origDog = dogs[indexPath.row]
                             origDog.name = dog.name
                             origDog.breed = dog.breed
+                            tableView.reloadData()
+                        }
+                        else {
+                            // unwinding from an AddSegue because there is not a selected row
+                            // get the dog, add it to the array
+                            // update the table view
+                            dogs.append(dog)
                             tableView.reloadData()
                         }
                     }

@@ -41,10 +41,18 @@ class DogDetailViewController: UIViewController {
         if let identifier = segue.identifier {
             if identifier == "SaveUnwindSegue" {
                 if let name = nameTextField.text, let breed = breedTextField.text {
-                    // what do do if one of the fields is empty??
+                    // what to do if one of the fields is empty??
                     if let dog = dog {
                         dog.name = name
                         dog.breed = breed
+                    }
+                    else {
+                        // if dog is nil, then we are adding a new dog
+                        // create a new dog to have name and breed from the text fields
+                        // set the property dog to this new dog
+                        let newDog = Dog(name: name, breed: breed)
+                        self.dog = newDog
+                        
                     }
                 }
             }
