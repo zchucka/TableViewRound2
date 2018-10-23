@@ -16,6 +16,8 @@ class DogDetailViewController: UIViewController {
 
     @IBOutlet var nameTextField: UITextField!
     @IBOutlet var breedTextField: UITextField!
+    // MARK: LAB #21
+    @IBOutlet var imageView: UIImageView!
     
     
     override func viewDidLoad() {
@@ -27,6 +29,8 @@ class DogDetailViewController: UIViewController {
             // TODO: update the view to show this dog's name and breed
             nameTextField.text = dog.name
             breedTextField.text = dog.breed
+            // MARK: LAB #21
+            imageView.image = UIImage(named: dog.imageName)
         }
         
     }

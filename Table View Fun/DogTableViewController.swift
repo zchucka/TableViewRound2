@@ -51,9 +51,29 @@ class DogTableViewController: UIViewController, UITableViewDataSource, UITableVi
         // since we only have one section, we only need to use its row
         let dog = dogs[indexPath.row]
         cell.update(with: dog)
+        // MARK: LAB #19
+        // note: this isn't actually required if you provide an implementation for tableView(_:moveRowAt:to:)
+        cell.showsReorderControl = true
         
         // return the cell
         return cell
+    }
+    
+    // MARK: LAB #19.a.
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let dog = dogs.remove(at: sourceIndexPath.row)
+        dogs.insert(dog, at: destinationIndexPath.row)
+        // MARK: LAB #19.b.
+        tableView.reloadData()
+    }
+    
+    // MARK: LAB #20
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            dogs.remove(at: indexPath.row)
+            // MARK: LAB #20.a.
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -102,6 +122,13 @@ class DogTableViewController: UIViewController, UITableViewDataSource, UITableVi
             }
         }
     }
-
+    
+    
+    @IBAction func editBarButtonPressed(_ sender: UIBarButtonItem) {
+        let newEditing = !tableView.isEditing
+        tableView.setEditing(newEditing, animated: true)
+        
+    }
+    
 }
 
