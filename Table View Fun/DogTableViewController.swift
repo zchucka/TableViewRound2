@@ -71,6 +71,11 @@ class DogTableViewController: UIViewController, UITableViewDataSource, UITableVi
             }
         }
     }
+    
+    // an unwind method
+    @IBAction func unwindToDogTableVC(segue: UIStoryboardSegue) {
+        print("unwinding")
+    }
 
 }
 

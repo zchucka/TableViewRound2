@@ -32,14 +32,24 @@ class DogDetailViewController: UIViewController {
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        // if its SaveUnwindSegue, grab the values in the text fields and update the dog
+        if let identifier = segue.identifier {
+            if identifier == "SaveUnwindSegue" {
+                if let name = nameTextField.text, let breed = breedTextField.text {
+                    // what do do if one of the fields is empty??
+                    if let dog = dog {
+                        dog.name = name
+                        dog.breed = breed
+                    }
+                }
+            }
+        }
     }
-    */
+    
 
 }

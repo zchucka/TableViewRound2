@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5Pf-5q-HZv">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rap-Dt-Dn4">
-                                <rect key="frame" x="0.0" y="36" width="375" height="631"/>
+                                <rect key="frame" x="0.0" y="80" width="375" height="587"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DogCell" id="MNT-ep-Rnl" customClass="DogTableViewCell" customModule="Table_View_Fun" customModuleProvider="target">
@@ -76,15 +76,16 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="hW3-re-rkC"/>
                     <connections>
                         <outlet property="tableView" destination="rap-Dt-Dn4" id="Yr7-ok-eea"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="551" y="-50"/>
+            <point key="canvasLocation" x="1418" y="-51"/>
         </scene>
-        <!--Dog Detail View Controller-->
+        <!--Dog Details-->
         <scene sceneID="gv4-Lb-4vh">
             <objects>
                 <viewController id="jPO-ch-rkz" customClass="DogDetailViewController" customModule="Table_View_Fun" customModuleProvider="target" sceneMemberID="viewController">
@@ -93,7 +94,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ncM-h7-CZd">
-                                <rect key="frame" x="16" y="36" width="343" height="68"/>
+                                <rect key="frame" x="16" y="80" width="343" height="68"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="IUV-pz-DnA">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="68"/>
@@ -140,14 +141,40 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4eW-N5-V4p"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Dog Details" id="3tD-9r-dih">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="raP-Fe-SGk">
+                            <connections>
+                                <segue destination="x7c-Ue-Ebk" kind="unwind" identifier="SaveUnwindSegue" unwindAction="unwindToDogTableVCWithSegue:" id="guS-4W-lSX"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="breedTextField" destination="QkX-GW-Gbn" id="hv0-of-HmK"/>
                         <outlet property="nameTextField" destination="6Sv-3a-vmj" id="HTM-XD-HRh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mwH-b4-30N" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="x7c-Ue-Ebk" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1471" y="-51"/>
+            <point key="canvasLocation" x="2408.8000000000002" y="-51.724137931034484"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="O9q-O0-Xrv">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5Pf-5q-HZv" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Bwm-uH-CJQ">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="hgx-56-g4m"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Td8-Ky-1er" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="549.60000000000002" y="-50.824587706146929"/>
         </scene>
     </scenes>
 </document>
