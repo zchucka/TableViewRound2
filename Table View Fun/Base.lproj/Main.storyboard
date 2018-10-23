@@ -6,6 +6,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -56,6 +57,7 @@
                                         <connections>
                                             <outlet property="breedLabel" destination="0co-oh-7Mb" id="Ybv-CA-jJb"/>
                                             <outlet property="nameLabel" destination="Doj-VU-Luy" id="4xi-em-HfX"/>
+                                            <segue destination="jPO-ch-rkz" kind="show" identifier="DetailSegue" id="YsX-lP-mm5"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -81,6 +83,71 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="551" y="-50"/>
+        </scene>
+        <!--Dog Detail View Controller-->
+        <scene sceneID="gv4-Lb-4vh">
+            <objects>
+                <viewController id="jPO-ch-rkz" customClass="DogDetailViewController" customModule="Table_View_Fun" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3xx-S4-rQW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ncM-h7-CZd">
+                                <rect key="frame" x="16" y="36" width="343" height="68"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="IUV-pz-DnA">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="68"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qYO-Kc-49Y">
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Breed:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="toD-R8-Jy5">
+                                                <rect key="frame" x="0.0" y="38" width="50" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="oth-wH-eOa">
+                                        <rect key="frame" x="58" y="0.0" width="285" height="68"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Sv-3a-vmj">
+                                                <rect key="frame" x="0.0" y="0.0" width="285" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QkX-GW-Gbn">
+                                                <rect key="frame" x="0.0" y="38" width="285" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ncM-h7-CZd" firstAttribute="leading" secondItem="4eW-N5-V4p" secondAttribute="leading" constant="16" id="4Bt-1e-JJ5"/>
+                            <constraint firstItem="4eW-N5-V4p" firstAttribute="trailing" secondItem="ncM-h7-CZd" secondAttribute="trailing" constant="16" id="HaQ-k1-QxX"/>
+                            <constraint firstItem="ncM-h7-CZd" firstAttribute="top" secondItem="4eW-N5-V4p" secondAttribute="top" constant="16" id="Jxc-p4-zux"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="4eW-N5-V4p"/>
+                    </view>
+                    <connections>
+                        <outlet property="breedTextField" destination="QkX-GW-Gbn" id="hv0-of-HmK"/>
+                        <outlet property="nameTextField" destination="6Sv-3a-vmj" id="HTM-XD-HRh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mwH-b4-30N" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1471" y="-51"/>
         </scene>
     </scenes>
 </document>
