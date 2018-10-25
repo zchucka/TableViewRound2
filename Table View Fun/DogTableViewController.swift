@@ -7,22 +7,50 @@
 //
 
 import UIKit
+// MARK: - Persistent Data Storage
+// so far, any changes the user makes to our data will not be persistent across different runs of the map
+// two main types of persistent data storages
+// 1. local
+// 2. remote
+
+// there are a few options for iOS local data persistence
+// 1. UserDefaults: key value storage for simple data types
+//    - use userDefaults to score a high score or user setting like a theme or music volume setting
+// 2. Archiving: reading and writing codable objects to the file system
+//    - when you need to update only one object in a file, you have to load and write the entire file
+//    - not very efficient when the file is large
+// 3. A SQLite database
+// 4. Core Data: an Apple framework for an OOP wrapper to a data store, by default the data source on iOS for Core Date is a SQLite database
+
+// options to consider for remote data persistence
+// Realm, Firebase, set up your own server, Parse Server
+
 
 class DogTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet var tableView: UITableView!
-    var dogs = [Dog]()
+    var dogs = [Dog]() {
+        didSet {
+            Dog.saveToFile(dogs: dogs)
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        // cmd shift g to paste the URL path and find where the folder is made
+        print(Dog.dogPlistURL)
         initializeDogs()
     }
 
     func initializeDogs() {
-        dogs.append(Dog(name: "Lassie", breed: "Collie"))
-        dogs.append(Dog(name: "AirBud", breed: "Retriever"))
-        dogs.append(Dog(name: "Clifford", breed: "BigRedDog"))
+        if let dogs = Dog.loadFromFile() {
+            self.dogs = dogs
+        } else {
+            dogs.append(Dog(name: "Lassie", breed: "Collie"))
+            dogs.append(Dog(name: "AirBud", breed: "Retriever"))
+            dogs.append(Dog(name: "Clifford", breed: "BigRedDog"))
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
